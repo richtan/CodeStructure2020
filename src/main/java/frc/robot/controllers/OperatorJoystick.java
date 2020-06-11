@@ -18,14 +18,7 @@ public class OperatorJoystick implements CompetitionJoystick {
         joystick = new Joystick(Context.operatorJoystickID);
 
         addTriggers(new Trigger[]{
-            new Trigger(this, Trigger.Type.BUTTON, Context.flipOutIntakeButtonID, new FlipOutIntake()),
-            new Trigger(this, Trigger.Type.AXIS, Context.flipInIntakeTriggerID, new FlipInIntake()),
-            new Trigger(this, Trigger.Type.DPAD, Context.reverseNMFDirectionDpadID, new ReverseNMF()),
-            new Trigger(this, Trigger.Type.BUTTON, Context.spinNMFToggleButtonID, new StopNMF()),
-            new Trigger(this, Trigger.Type.DPAD, Context.reverseIntakeDirectionDpadID, new ReverseIntake()),
-            new Trigger(this, Trigger.Type.DPAD, Context.nmfSlowSpinDpadID, new NMFSlowSpin()),
-            new Trigger(this, Trigger.Type.AXIS, Context.shoot, new Shoot())
-            
+            new Trigger(this, Trigger.Type.BUTTON, Context.exampleButtonID, new ExampleAction()),
         });
     }
 
@@ -99,14 +92,6 @@ public class OperatorJoystick implements CompetitionJoystick {
         for (Trigger trigger : triggersToAdd) {
             triggers.add(trigger);
         }
-    }
-
-    public boolean getClimbU() {
-        return joystick.getRawButton(Context.climbButtonUp);
-    }
-
-    public boolean getClimbD() {
-        return joystick.getRawButton(Context.climbButtonDown);
     }
 
     /**
