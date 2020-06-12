@@ -16,12 +16,9 @@ public class DriverJoystick implements CompetitionJoystick {
 
     public DriverJoystick() {
         joystick = new Joystick(Context.driverJoystickID);
-
+        
         addTriggers(new Trigger[]{
-            new Trigger(this, Trigger.Type.BUTTON, Context.toggleTrack, new VisionAlign()),
-            new Trigger(this, Trigger.Type.BUTTON, Context.shiftGearsButtonID, new ShiftGears()),
-            new Trigger(this, Trigger.Type.BUTTON, Context.climbButtonUp, new Climb(Climb.ClimbActions.UP)),
-            new Trigger(this, Trigger.Type.BUTTON, Context.climbButtonDown, new Climb(Climb.ClimbActions.DOWN))
+            new Trigger(this, Trigger.Type.BUTTON, Context.exampleButtonID, new ExampleAction()),
         });
     }
 
@@ -99,14 +96,6 @@ public class DriverJoystick implements CompetitionJoystick {
         for (Trigger trigger : triggersToAdd) {
             triggers.add(trigger);
         }
-    }
-
-    public boolean getClimbU() {
-        return joystick.getRawButton(Context.climbButtonUp);
-    }
-
-    public boolean getClimbD() {
-        return joystick.getRawButton(Context.climbButtonDown);
     }
 
     /**

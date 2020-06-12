@@ -17,11 +17,7 @@ public class Context {
     public static final int leftMotor2ID = 1;
     public static final int rightMotor1ID = 14;
     public static final int rightMotor2ID = 15;
-  
-    //----- Flywheel Shooter Values -----
-    public static final int shooterMotorID = 2;
-    public static final int FALCON_ENCODER_CPR = 2048;
-  
+    
     /* TalonSRX and Encoder Drivetrain Values */
     public static final int leftEncoderChannelA = 0;
     public static final int leftEncoderChannelB = 1;
@@ -47,46 +43,13 @@ public class Context {
     public static final int throttleAxisID = 1;
 
     // Button IDs
-    public static final int climbButtonDown = 2;
-    public static final int climbButtonUp = 4;
-    public static final int shoot = 3; 
-    public static final int toggleTrack = 6; //will be one right bumper of driver joystick
     public static final int shiftGearsButtonID = 1;
     public static final int quickTurnLeftTriggerID = 2;
     public static final int quickTurnRightTriggerID = 3;
     public static final int loopyLoopBreak = 7;
-
-    public static final int flipOutIntakeButtonID = 6;
-    public static final int flipInIntakeTriggerID = 2;
-    public static final int reverseNMFDirectionDpadID = 3;
-    public static final int reverseIntakeDirectionDpadID = 4;
-    public static final int spinNMFToggleButtonID = 2;
-    public static final int nmfSlowSpinDpadID = 1;
-
-
+    public static final int exampleButtonID = 0;
 
     //----- Vision Alignment System -----
-    public static final double alignmentTimeout = 3000; //after how many milliseconds stop the alignment loop and abort
-    public static final double alignmentThreshold = 0.5; //within how many degrees can we say "good enough" aligning the robot
-    public static final double ckStatic = 0.15;
-    public static final double maxTurnPower = 2.0; // SAFETY
-
-    //----- Intake System -----
-    public static final int intakeFlipChannelA = 2;
-    public static final int intakeFlipChannelB = 3;
-    public static final int intakeMotorId = 8;
-
-    // NMF Values
-    public static final int nmfSparkID = 4;
-    public static final int omniSparkID = 5;
-    public static final int nmfEncoderInterfaceID = 9;
-
-    //----- Climbing System -----
-    public static final int climberMotorID = 6;
-    public static final int coilMotor1ID = 2;
-    public static final int coilMotor2ID = 3;
-    public static final double coilSpeed = 0.5;
-    public static final double uncoilSpeed = -0.5;
 
     //----- Acme Robotics Tank Drive -----
     // maxVel, maxAccel, maxJerk, maxAngVel, maxAngAccel, maxAngJerk
@@ -104,8 +67,7 @@ public class Context {
     public static final double kV = 0.0;
 
     //----- Superstructure/Game Measurements -----
-    public static final double M_FLYWHEEL_RADIUS = 0.0508;
-    public static final double M_BALL_DIAMETER = 0.0762;
+
 
     //----- Time Function -----
     public static double getRelativeTimeSeconds(double relativePoint) {
@@ -117,28 +79,5 @@ public class Context {
     public static final int cameraHeight = 1;
     public static final int cameraFPS = 1;
 
-    //----- WOF Colors -----
-    public static char WOFTargetColor = 'N'; //N for none. B,G,R,Y for other colors.
 
-	
-    public static final Map<Character, String> WOFColors = Map.of( //Map of Driver Station Colors
-        'B', "#0000FF",
-        'G', "#00FF00",
-        'R', "#FF0000",
-        'Y', "#FFFF00",
-        'N', "#DDDDDD");
-    public static void setWOFTargetColor() { //Sets WOFTargetColor based on Driver Station
-        if(robotController.driverStation.getGameSpecificMessage().length() > 0) {
-            System.out.println(robotController.driverStation.getGameSpecificMessage().charAt(0));
-            char color = robotController.driverStation.getGameSpecificMessage().charAt(0);
-            if (WOFColors.containsKey(color)) {
-                WOFTargetColor = color;
-            } else { //Corrupted
-                WOFTargetColor = 'N';
-            }
-        } 
-        else {
-            WOFTargetColor = 'N';
-        }
-    }
 }
