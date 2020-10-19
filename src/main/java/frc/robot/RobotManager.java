@@ -123,10 +123,13 @@ public class RobotManager {
         for (Action action : actionQueue) {
             switch(action.getState()) {
                 case IDLE:
+                    break;
                 case BLOCKED:
                     action.start();
+                    break;
                 case RUNNING:
                     action.loop();
+                    break;
                 case DONE:
                     actionsDone.add(action);
             }
