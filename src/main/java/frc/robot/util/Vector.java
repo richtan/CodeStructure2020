@@ -1,9 +1,9 @@
 package frc.robot.util;
 
 class Vector {
-    public final double x;
-    public final double y;
-    public final double z;
+    public double x;
+    public double y;
+    public double z;
     
     public Vector() {
         this(0, 0, 0);
@@ -19,27 +19,45 @@ class Vector {
         this.z = z;
     }
 
-    public static Vector add(Vector... vectors) {
-        double x = 0;
-        double y = 0;
-        double z = 0;
-        for(Vector vector : vectors) {
-            x += vector.x;
-            y += vector.y;
-            z += vector.z;
-        }
-        return new Vector(x, y, z);
+    public void add(Vector B)
+    {
+        x+=B.x;
+        y+=B.y;
+        z+=B.z;
     }
 
-    public static Vector subtract(Vector vector1, Vector vector2) {
-        return new Vector(vector1.x + vector2.x, vector1.y + vector2.y, vector1.z + vector2.z);
+    public void subtract(Vector B)
+    {
+        x-=B.x;
+        y-=B.y;
+        z-=B.z;
+    }
+    
+    public void scale(double scalar) {
+        x*=scalar;
+        y*=scalar;
+        z*=scalar;
+    }
+    
+    public void reverse() {
+        scale(-1);
     }
 
-    public static Vector scale(Vector vector, double scalar) {
+    public static Vector addVectors(Vector A, Vector B)
+    {
+        return new Vector(A.x+B.x, A.y+B.y, A.z+B.z);
+    }
+
+    public static Vector subtractVectors(Vector A, Vector B)
+    {
+        return new Vector(A.x-B.x, A.y-B.y, A.z-B.z);
+    }
+
+    public static Vector scaleVector(Vector vector, double scalar) {
         return new Vector(vector.x * scalar, vector.y * scalar, vector.z * scalar);
     }
 
-    public static Vector reverse(Vector vector) {
-        return scale(vector, -1);
+    public static Vector reverseVector(Vector vector) {
+        return scaleVector(vector, -1);
     }
 }
