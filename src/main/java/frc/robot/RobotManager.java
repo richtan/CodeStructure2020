@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class RobotManager {
     //Declare all subsystems here
-    
+    Drivebase drivebase = new Drivebase();
 
     //Actions that should trigger at the beginning of each specified match period
     private Action[] robotInitActions;
