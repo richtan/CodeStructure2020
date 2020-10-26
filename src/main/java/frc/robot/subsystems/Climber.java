@@ -5,12 +5,17 @@ import frc.robot.util.PIDF;
 public class Climber {
 
     //Climber has 4 NEOs. IDs 1,2 are for the telescope. IDs 3,4 are for the climbing spool.
-    public  Climber(neo1_, neo2_, neo3_, neo4_) {
+    CANSparkMax telescopeNEO1;
+    CANSparkMax telescopeNEO2;
+    CANSparkMax spoolNEO1;
+    CANSparkMax spoolNEO2;
+
+    public Climber(CANSparkMax neo1_, CANSparkMax neo2_, CANSparkMax neo3_, CANSparkMax neo4_) {
       //motors
-      CANSparkMax telescopeNEO1 = neo1_;
-      CANSparkMax telescopeNEO2 = neo2_;
-      CANSparkMax spoolNEO1 = neo3_;
-      CANSparkMax spoolNEO2 = neo4_;
+      telescopeNEO1 = neo1_;
+      telescopeNEO2 = neo2_;
+      spoolNEO1 = neo3_;
+      spoolNEO2 = neo4_;
 
       //encoders (both spool/telescope motors should be at the same position so we only need one)
       CANEncoder tele1Encoder = telescopeNEO1.getEncoder();
