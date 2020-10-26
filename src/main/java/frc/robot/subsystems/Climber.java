@@ -10,6 +10,9 @@ public class Climber {
     CANSparkMax spoolNEO1;
     CANSparkMax spoolNEO2;
 
+    CANEncoder tele1Encoder;
+    CANEncoder spool1Encoder;
+
     //vars for PIDF
     long currentTime;
     long previousTime = 0;
@@ -32,8 +35,8 @@ public class Climber {
       spoolNEO2 = neo4_;
 
       //encoders (both spool/telescope motors should be at the same position so we only need one)
-      CANEncoder tele1Encoder = telescopeNEO1.getEncoder();
-      CANEncoder spool1Encoder = spoolNEO1.getEncoder();
+      tele1Encoder = telescopeNEO1.getEncoder();
+      spool1Encoder = spoolNEO1.getEncoder();
 
       //motors move the same, so these will just follow. Only need to use spoolNEO1 or telescopeNEO1
       telescopeNEO2.follow(telescopeNEO1);
