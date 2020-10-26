@@ -10,6 +10,20 @@ public class Climber {
     CANSparkMax spoolNEO1;
     CANSparkMax spoolNEO2;
 
+    //vars for PIDF
+    long currentTime;
+    long previousTime = 0;
+    double timeFrame;
+    double telescopeNextInput;
+    double spoolNextInput;
+    double telescopeGoalPosition;
+    double spoolGoalPosition;
+
+    //TODO: Set PIDF factors
+    PIDF telePIDF = new PIDF(1, 0, 0);
+    PIDF spoolPIDF = new PIDF(1, 0, 0);
+
+
     public Climber(CANSparkMax neo1_, CANSparkMax neo2_, CANSparkMax neo3_, CANSparkMax neo4_) {
       //motors
       telescopeNEO1 = neo1_;
@@ -25,19 +39,6 @@ public class Climber {
       telescopeNEO2.follow(telescopeNEO1);
       spoolNEO2.follow(spoolNEO1);
     }
-
-    //vars for PIDF
-    long currentTime;
-    long previousTime = 0;
-    double timeFrame;
-    double telescopeNextInput;
-    double spoolNextInput;
-    double telescopeGoalPosition;
-    double spoolGoalPosition;
-
-    //TODO: Set PIDF factors
-    PIDF telePIDF = new PIDF(1, 0, 0);
-    PIDF spoolPIDF = new PIDF(1, 0, 0);
 
 
     public void loop() {
